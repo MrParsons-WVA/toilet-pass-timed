@@ -1,13 +1,22 @@
+input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
+    Time = 0
+})
+input.onButtonPressed(Button.A, function () {
+    Start = true
+})
 input.onButtonPressed(Button.B, function () {
-    basic.showNumber(Time / 60)
+    Start = false
 })
 let Time = 0
+let Start = false
+Start = false
 Time = 0
-loops.everyInterval(1000, function () {
-    Time += 1
-})
 basic.forever(function () {
-    scrollbit.setUpsideDown(true)
-    scrollbit.scrollText("Toilet Pass Room 41 Mr Parsons", 128, 50)
-    scrollbit.show()
+    if (Start == true) {
+        scrollbit.scrollText("Toilet Pass", 128, 10)
+        Time += 1
+    } else {
+        basic.showNumber(Time * 2)
+        scrollbit.scrollText("You where out of the classroom for", 128, 20)
+    }
 })
